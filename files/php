@@ -1,0 +1,19 @@
+location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    fastcgi_read_timeout 600; # 10 minute read timeout...
+    include        fastcgi_params;
+
+    set $fe_https "off";
+    if ($http_x_forwarded_proto = "https") {
+      set $fe_https "on";
+    }
+    if ($https = "on") {
+      set $fe_https "on";
+    }
+
+    fastcgi_param  HTTPS $fe_https;
+    fastcgi_param  FE_HTTPS $fe_https;
+}
