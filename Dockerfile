@@ -1,4 +1,4 @@
-#sudo docker run -d --name processmaker  -p 80:80  processmaker
+#sudo docker run -d --restart=always -h processmakerr  --name=192-168-151-8    -p 80:80 --net=192.168.150.0/23 --ip=192.168.151.8 192.168.19.252/library/processmaker
 FROM alpine:3.6
 ENV PROCESSMAKER_VERSION 3.2.1
 ADD "processmaker-${PROCESSMAKER_VERSION}-community.tar.gz" /opt/
