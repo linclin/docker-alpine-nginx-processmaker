@@ -22,4 +22,4 @@ EXPOSE 80
 VOLUME "/opt/processmaker/"
 WORKDIR "/opt/processmaker/workflow/engine"
 
-CMD ["/run.sh"]
+CMD ["/run.sh"] 
