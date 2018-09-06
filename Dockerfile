@@ -1,6 +1,6 @@
 #sudo docker run -d --restart=always -h processmakerr  --name=192-168-151-8    -p 80:80 --net=192.168.150.0/23 --ip=192.168.151.8 192.168.19.252/library/processmaker
 FROM alpine:3.6
-ENV PROCESSMAKER_VERSION 3.2.1
+ENV PROCESSMAKER_VERSION 3.2.3
 ADD "processmaker-${PROCESSMAKER_VERSION}-community.tar.gz" /opt/
 RUN apk update  \
     && apk add   bash curl curl-dev openldap-dev tzdata nginx ca-certificates php5-fpm php5-opcache php5-json php5-zlib php5-xml php5-pdo php5-phar php5-openssl php5-pdo_mysql php5-mysqli php5-gd php5-iconv php5-mcrypt php5-ctype php5-cli php5-curl php5-soap php5-ldap php5-dom php5-mysql    freetds   \ 
