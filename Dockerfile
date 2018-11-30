@@ -1,4 +1,4 @@
-#sudo docker run -d --restart=always -h processmaker  --name=processmaker    -p 80:80   registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker
+#sudo docker run -d --restart=always -h processmaker  --name=processmaker    -p 81:80   registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker
 FROM alpine:3.8
 ENV PROCESSMAKER_VERSION 3.3.0
 ADD "processmaker-${PROCESSMAKER_VERSION}-community.tar.gz" /opt/
