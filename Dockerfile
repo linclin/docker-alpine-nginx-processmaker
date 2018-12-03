@@ -18,21 +18,15 @@ ADD files/run.sh /run.sh
 RUN chmod +x /run.sh &&\
     mkdir -p /var/tmp/nginx/ /run/nginx &&\
     chown -R nginx:www-data /var/lib/nginx &&\
-    sed -i '/short_open_tag = Off/c\short_open_tag = On' /etc/php.ini &&\
-    sed -i '/post_max_size = 8M/c\post_max_size = 24M' /etc/php.ini &&\
-    sed -i '/upload_max_filesize = 2M/c\upload_max_filesize = 24M' /etc/php.ini &&\
-    sed -i '/;date.timezone =/c\date.timezone = America/New_York' /etc/php.ini &&\
-    sed -i '/expose_php = On/c\expose_php = Off' /etc/php.ini &&\ 
-    sed -i '/;opcache.enable_cli=0/c\opcache.enable_cli=1' /etc/php.d/opcache.ini &&\
-    sed -i '/opcache.max_accelerated_files=4000/c\opcache.max_accelerated_files=10000' /etc/php.d/opcache.ini &&\
-    sed -i '/;opcache.max_wasted_percentage=5/c\opcache.max_wasted_percentage=5' /etc/php.d/opcache.ini &&\
-    sed -i '/;opcache.use_cwd=1/c\opcache.use_cwd=1' /etc/php.d/opcache.ini &&\
-    sed -i '/;opcache.validate_timestamps=1/c\opcache.validate_timestamps=1' /etc/php.d/opcache.ini &&\
-    sed -i '/;opcache.fast_shutdown=0/c\opcache.fast_shutdown=1' /etc/php.d/opcache.ini &&\
+    sed -i '/short_open_tag = Off/c\short_open_tag = On' /etc/php7/php.ini &&\
+    sed -i '/post_max_size = 8M/c\post_max_size = 24M' /etc/php7/php.ini &&\
+    sed -i '/upload_max_filesize = 2M/c\upload_max_filesize = 24M' /etc/php7/php.ini &&\
+    sed -i '/;date.timezone =/c\date.timezone = America/New_York' /etc/php7/php.ini &&\
+    sed -i '/expose_php = On/c\expose_php = Off' /etc/php7/php.ini 
 ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/01-processmaker.conf /etc/nginx/conf.d/default.conf
 ADD files/php /etc/nginx/php
-ADD files/php-fpm.conf /etc/php5/php-fpm.conf
+ADD files/php-fpm.conf /etc/php7/php-fpm.conf
 
 EXPOSE 80
 VOLUME "/opt/processmaker/"
