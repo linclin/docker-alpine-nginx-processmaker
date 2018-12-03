@@ -27,7 +27,7 @@ RUN chmod +x /run.sh &&\
     mkdir -p /var/run/php-fpm/  &&\
     mkdir -p /var/log/nginx/ 
 ADD files/nginx.conf /etc/nginx/nginx.conf
-ADD files/01-processmaker.conf /etc/nginx/conf.d/default.conf
+ADD files/processmaker.conf /etc/nginx/conf.d/processmaker.conf
 ADD files/php /etc/nginx/php
 ADD files/php-fpm.conf /etc/php7/php-fpm.conf
 
