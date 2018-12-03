@@ -22,7 +22,10 @@ RUN chmod +x /run.sh &&\
     sed -i '/post_max_size = 8M/c\post_max_size = 24M' /etc/php7/php.ini &&\
     sed -i '/upload_max_filesize = 2M/c\upload_max_filesize = 24M' /etc/php7/php.ini &&\
     sed -i '/;date.timezone =/c\date.timezone = America/New_York' /etc/php7/php.ini &&\
-    sed -i '/expose_php = On/c\expose_php = Off' /etc/php7/php.ini 
+    sed -i '/expose_php = On/c\expose_php = Off' /etc/php7/php.ini &&\
+    mkdir -p /var/log/php-fpm/  &&\
+    mkdir -p /var/run/php-fpm/  &&\
+    mkdir -p /var/log/nginx/ 
 ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/01-processmaker.conf /etc/nginx/conf.d/default.conf
 ADD files/php /etc/nginx/php
