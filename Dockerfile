@@ -1,7 +1,7 @@
 #安装文档 https://wiki.processmaker.com/3.3/Stack_N225
 #sudo docker run -d --restart=always -h processmaker  --name=processmaker    -p 81:80   registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker
 FROM alpine:3.8
-ENV PROCESSMAKER_VERSION 3.3.0
+ENV PROCESSMAKER_VERSION 3.2.3
 ADD "processmaker-${PROCESSMAKER_VERSION}-community.tar.gz" /opt/
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update  \
