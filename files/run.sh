@@ -1,4 +1,4 @@
 #!/bin/sh
 crond
-php-fpm7
+php-fpm5
 nginx
