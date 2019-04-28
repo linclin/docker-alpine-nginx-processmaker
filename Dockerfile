@@ -9,10 +9,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /var/cache/apk/*  /tmp/*   /var/tmp/*  \
     && echo "Asia/Shanghai" > /etc/timezone  \
     && cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  \
-	&& chown -R nginx:www-data /opt/processmaker \
-	&& cd /opt/processmaker/workflow/engine \
-  	&& ln -s ../../gulliver/bin/gulliver gulliver \
-	&& echo "*/5 * * * * php -f /opt/processmaker/workflow/engine/bin/cron.php +force" >> /var/spool/cron/crontabs/root
+    && chown -R nginx:www-data /opt/processmaker \
+    && cd /opt/processmaker/workflow/engine \
+    && ln -s ../../gulliver/bin/gulliver gulliver \
+    && echo "*/5 * * * * php -f /opt/processmaker/workflow/engine/bin/cron.php +force" >> /var/spool/cron/crontabs/root
 
 ADD files/run.sh /run.sh
 RUN chmod +x /run.sh &&\
@@ -24,7 +24,8 @@ RUN chmod +x /run.sh &&\
 ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/processmaker.conf /etc/nginx/conf.d/default.conf 
 ADD files/php-fpm.conf /etc/php5/php-fpm.conf
-
+ADD files/WeiRuanYaHei.ttf /opt/processmaker/workflow/public_html/lib/fonts
+ADD files/ProcessMap.php /opt/processmaker/workflow/engine/src/ProcessMaker/BusinessModel/ProcessMap.php
 EXPOSE 80
 VOLUME "/opt/processmaker/"
 WORKDIR "/opt/processmaker/workflow/engine"
