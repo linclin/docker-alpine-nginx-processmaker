@@ -21,5 +21,5 @@ docker restart uwork-mysql
 sudo docker run --name phpmyadmin -h phpmyadmin   --restart always -d -v /etc/localtime:/etc/localtime -e PMA_ARBITRARY=1 -e PMA_HOSTS=10.10.133.11 -e PMA_VERBOSES=uwork -e PMA_PORTS=3306   -p 8060:80 phpmyadmin/phpmyadmin 
 #GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.33.1.175' IDENTIFIED BY 'monitor_admin' WITH GRANT OPTION;   FLUSH   PRIVILEGES; 
 #启动ProcessMaker
-sudo docker run -d --restart=always -h processmaker  --name=processmaker -v /etc/localtime:/etc/localtime   -p 81:80   registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker 
+sudo docker run -d --restart=always -h processmaker  --name=processmaker -v /etc/localtime:/etc/localtime   -p 81:80   registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.8  
 ```
