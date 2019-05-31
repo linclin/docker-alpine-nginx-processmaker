@@ -1,7 +1,9 @@
 #安装文档 https://wiki.processmaker.com/3.3/Stack_N225
+#sudo docker build  --network=host --no-cache -t  registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.10 .
+#sudo docker push registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.10
 #sudo docker run -d --restart=always -h processmaker  --name=processmaker    -p 81:80   registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker
 FROM alpine:3.8
-ENV PROCESSMAKER_VERSION 3.3.8
+ENV PROCESSMAKER_VERSION 3.3.10
 ADD "processmaker-${PROCESSMAKER_VERSION}-community.tar.gz" /opt/
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update  \
@@ -24,8 +26,9 @@ RUN chmod +x /run.sh &&\
 ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/processmaker.conf /etc/nginx/conf.d/default.conf 
 ADD files/php-fpm.conf /etc/php5/php-fpm.conf
-ADD files/WeiRuanYaHei.ttf /opt/processmaker/workflow/public_html/lib/fonts
-ADD files/ProcessMap.php /opt/processmaker/workflow/engine/src/ProcessMaker/BusinessModel/ProcessMap.php
+ADD files/code/schema.sql /opt/processmaker/workflow/engine/data/mysql/schema.sql
+ADD files/code/WeiRuanYaHei.ttf /opt/processmaker/workflow/public_html/lib/fonts
+ADD files/code/ProcessMap.php /opt/processmaker/workflow/engine/src/ProcessMaker/BusinessModel/ProcessMap.php
 EXPOSE 80
 VOLUME "/opt/processmaker/"
 WORKDIR "/opt/processmaker/workflow/engine"

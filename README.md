@@ -6,8 +6,8 @@
 ### Docker 镜像制作
 ``` shell
 # 使用multi-stage(多阶段构建)需要docker 17.05+版本支持
-sudo docker build  --network=host --no-cache -t  registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.8 .
-sudo docker push registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.8 
+sudo docker build  --network=host --no-cache -t  registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.10 .
+sudo docker push registry.cn-shenzhen.aliyuncs.com/dev-ops/processmaker:3.3.10
 
 ```
 ## Docker 快速启动
